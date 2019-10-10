@@ -41,12 +41,13 @@ print('-------------------')
 def two_arg(a, b=20):
     a = str(a)
     if len(a) > b:
-        print(a[0:19], b)
-    else: 
+         a = a[:19] + "..."
+    else:
         return(a)
+    return(a)
 result = two_arg(a = "LearnPythonLearnPythonLearnPythonLearnPythonLearnPythonLearnPython")
-print(two_arg)
-# Решено очень криво - остается пробел + ошибка идет при передаче функции переменнной
+print(result)
+# Мне кажется все равно кривовато
 
 print('-------------------')
 
@@ -55,17 +56,26 @@ def name_fio(name, lastname, patronymic):
     name = str(name)
     lastname = str(lastname)
     patronymic = str(patronymic)
-    print(name + f({lastname[0]} + patronymic[0])
-name_fio(name = 'Широков', lastname = 'Дмитрий', patronymic = 'Валерьевич')
+    print(name + f' {lastname[0]}.' + f' {patronymic[0]}.')
 
+name_fio(name = 'Широков', lastname = 'Дмитрий', patronymic = 'Валерьевич')
 
 print('-------------------')
 
 # Функиця принимает на вход строку и проверяет, есть ли в ней гласные.
 # Если есть - посчитать сколько их и вернуть результат, сколько и каких гласных есть
-def search_vowels():
-    vowels = set('aeyuio')
-    word = input("Enter the word: ")
-    founder = vowels.intersection(set(word))
-search_vowels()
-# Функция находит гласные, как считать пока не знаю
+def search_vowels(word):
+    word = str(word)
+    vowels = 0
+    for letter in word:
+        if letter.lower() in "aeyuio":
+            vowels += 1
+    vowels_2 = set('aeyuio')
+    founder = vowels_2.intersection(set(word))
+    for vowel in founder:
+        print(vowel)
+    return print(vowels)
+
+search_vowels(word = input("Enter the word: "))
+
+# Криво, но работает
